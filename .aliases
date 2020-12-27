@@ -1,19 +1,6 @@
 ##Make shorthands for common flags
 # alias ll="ls -lh"
 
-## Save a lot of typing for common commands
-# alias gs="git status"
-# alias gc="git commit"
-# alias v="vim"
-
-## Save you from mistyping
-# alias sl=ls
-
-## Overwrite existing commands for better defaults
-# alias mv="mv -i"           # -i prompts before overwrite
-# alias mkdir="mkdir -p"     # -p make parent dirs as needed
-# alias df="df -h"           # -h prints human readable format
-
 ## Alias can be composed
 # alias la="ls -A"
 # alias lla="la -l"
@@ -29,7 +16,17 @@
 
 # Save a lot of typing
 alias v="vim"
-alias cdp="cd /mnt/d/Programming"
+alias gc="git commit"
+alias gs="git status"
 
 # Mistyping
 alias dc="cd"
+alias sl=ls
+
+# Overwrite existing commands for better defaults
+alias mv="mv -i"           # -i prompts before overwrite
+alias mkdir="mkdir -p"     # -p make parent dirs as needed
+alias df="df -h"           # -h prints human readable format
+
+# OS specific
+alias cdp="cd /mnt/d/Programming"
