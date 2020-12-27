@@ -16,8 +16,11 @@
 
 # Save a lot of typing
 alias v="vim"
+alias ga="git add"
+alias gaa="git add --all"
 alias gc="git commit"
 alias gs="git status"
+alies gp="git push"
 
 # Mistyping
 alias dc="cd"
