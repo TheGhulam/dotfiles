@@ -21,7 +21,7 @@ alias gaa="git add --all"
 alias gc="git commit"
 alias gs="git status"
 alias gp="git push"
-alias xt="TERM=xterm-256colors"
+alias xt="TERM=xterm-256color"
 
 # Mistyping
 alias dc="cd"
