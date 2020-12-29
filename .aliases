@@ -16,6 +16,7 @@
 
 # Save a lot of typing
 alias v="vim"
+alias t="tmux"
 alias ga="git add"
 alias gaa="git add --all"
 alias gc="git commit"
