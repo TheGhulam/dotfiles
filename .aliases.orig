@@ -1,0 +1,43 @@
+#Make shorthands for common flags
+# alias ll="ls -lh"
+
+## Alias can be composed
+# alias la="ls -A"
+# alias lla="la -l"
+
+## To ignore an alias run it prepended with \
+# \ls
+## Or disable an alias altogether with unalias
+# unalias la
+
+## To get an alias definition just call it with alias
+# alias ll
+##Will print ll='ls -lh
+
+# Save a lot of typing
+alias v="vim"
+alias ga="git add"
+alias gaa="git add --all"
+alias gc="git commit"
+alias gs="git status"
+<<<<<<< HEAD
+alias gp="git push"
+alias xt="TERM=xterm-256colors"
+
+# Mistyping
+alias dc="cd"
+=======
+alies gp="git push"
+
+# Mistyping
+alias dc="cd"
+alias sl=ls
+>>>>>>> d300277a9646477bb07d4d8bd3ef8b931a4e99e8
+
+# Overwrite existing commands for better defaults
+alias mv="mv -i"           # -i prompts before overwrite
+alias mkdir="mkdir -p"     # -p make parent dirs as needed
+alias df="df -h"           # -h prints human readable format
+
+# OS specific
+alias cdp="cd /mnt/d/Programming"
