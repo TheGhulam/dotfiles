@@ -1,8 +1,16 @@
 " Personal preference
-set tabstop=8
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set shiftround
 set expandtab
 set colorcolumn=80
 highlight ColorColumn ctermbg=233
+
+" Disable stupid backup and swap files
+" set nobackup
+" set nowritebackup
+" set noswapfile
 
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
@@ -36,6 +44,9 @@ set relativenumber
 set laststatus=2
 set backspace=indent,eol,start
 set hidden
+set hlsearch
+map <leader>h :set hlsearch!<cr>
+set incsearch
 set ignorecase
 set smartcase
 set incsearch
@@ -73,6 +84,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'gruvbox-community/gruvbox'
 Plug 'preservim/nerdtree'
 Plug 'tpope/vim-fugitive'
+Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 
 call plug#end()
 
