@@ -4,7 +4,6 @@ set expandtab
 set colorcolumn=80
 highlight ColorColumn ctermbg=233
 
-
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
 
