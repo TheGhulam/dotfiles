@@ -34,3 +34,4 @@ alias df="df -h"           # -h prints human readable format
 
 # OS specific
 alias cdp="cd /mnt/d/Programming"
+alias cdc="cd /mnt/c/"

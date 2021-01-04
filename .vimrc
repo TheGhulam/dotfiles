@@ -1,11 +1,16 @@
 " Personal preference
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
 set shiftround
 set expandtab
 set colorcolumn=80
 highlight ColorColumn ctermbg=233
+set foldmethod=indent
+set foldlevel=99
+
+" Split navigations
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 " Disable stupid backup and swap files
 " set nobackup
@@ -31,8 +36,12 @@ vnoremap > >gv
 
 
 " Python
+autocmd Filetype python setlocal tabstop=4
 autocmd FileType python setlocal softtabstop=4
 autocmd Filetype python setlocal shiftwidth=4
+autocmd Filetype python setlocal expandtab
+autocmd Filetype python setlocal autoindent
+autocmd Filetype python setlocal fileformat=unix
 let g:syntastic_python_checkers=['pep8', 'pylint', 'python']
 
 " MIT Missing Semester settings
