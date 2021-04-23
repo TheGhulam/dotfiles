@@ -33,9 +33,9 @@ alias mkdir="mkdir -p"     # -p make parent dirs as needed
 alias df="df -h"           # -h prints human readable format
 
 # OS specific
-|              |
-|     WSL      |
-|              |
+# |              |
+# |     WSL      |
+# |              |
 alias cdp="cd /mnt/d/Programming"
 alias cdc="cd /mnt/c/"
 alias paste.exe="powershell.exe Get-Clipboard"
