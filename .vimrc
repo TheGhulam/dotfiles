@@ -46,6 +46,7 @@ let g:syntastic_python_checkers=['pep8', 'pylint', 'python']
 
 " MIT Missing Semester settings
 set nocompatible
+filetype plugin on
 syntax on
 set shortmess+=I
 set number
