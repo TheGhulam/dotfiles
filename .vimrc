@@ -95,6 +95,7 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'preservim/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+Plug 'vimwiki/vimwiki'
 
 call plug#end()
 
