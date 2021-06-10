@@ -91,6 +91,7 @@ autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!python3' shellesca
 " Vim-plug
 call plug#begin('~/.vim/plugged')
 
+Plug 'tomtom/tcomment_vim'
 Plug 'gruvbox-community/gruvbox'
 Plug 'vimwiki/vimwiki'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}

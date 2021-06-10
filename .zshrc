@@ -111,10 +111,6 @@ if [ -f ~/dotfiles/.aliases ]; then
             source ~/dotfiles/.aliases
 fi
 
-# github.com/rupa/z
-. /home/gahme/ghome/z/z.sh
-
-
 # Powerline
 if [ -f /usr/share/powerline/bindings/zsh/powerline.zsh ]; then
     . /usr/share/powerline/bindings/zsh/powerline.zsh

@@ -39,3 +39,8 @@ alias df="df -h"           # -h prints human readable format
 alias cdp="cd /mnt/d/Programming"
 alias cdc="cd /mnt/c/"
 alias paste.exe="powershell.exe Get-Clipboard"
+
+# This creates a temporary function f, which is passed the arguments.
+# Alias arguments are only passed at the end. Note that f is called at the very end of the alias.
+# The unset -f removes the function definition as the alias is executed so it doesn't hang around afterwards.
+alias clip='f(){ "$@" | clip.exe; unset -f f; }; f'
