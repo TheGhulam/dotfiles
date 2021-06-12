@@ -13,9 +13,9 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " Disable stupid backup and swap files
-" set nobackup
-" set nowritebackup
-" set noswapfile
+set nobackup
+set nowritebackup
+set noswapfile
 
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
