@@ -116,3 +116,7 @@ if [ -f /usr/share/powerline/bindings/zsh/powerline.zsh ]; then
     . /usr/share/powerline/bindings/zsh/powerline.zsh
 fi
 
+# Custom settings
+# https://stackoverflow.com/questions/3446320/in-vim-how-to-map-save-to-ctrl-s#3448551
+# stty -ixon
+

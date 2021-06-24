@@ -1,3 +1,21 @@
+" MIT Missing Semester settings
+set nocompatible
+filetype plugin on
+syntax on
+set shortmess+=I
+set number
+set relativenumber
+set laststatus=2
+set backspace=indent,eol,start
+set hidden
+set hlsearch
+map <leader>h :set hlsearch!<cr>
+set incsearch
+set ignorecase
+set smartcase
+set incsearch
+set noerrorbells visualbell t_vb=
+
 " Personal preference
 set shiftround
 set expandtab
@@ -20,9 +38,20 @@ set noswapfile
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
 
+" Ctrl + S to save
+" https://stackoverflow.com/questions/3446320/in-vim-how-to-map-save-to-ctrl-s#3448551
+noremap <silent> <C-S>          :update<CR>
+vnoremap <silent> <C-S>         <C-C>:update<CR>
+inoremap <silent> <C-S>         <C-O>:update<CR>
+
+" Leader + o/O for inserting new line without going in insert mode
+" https://vi.stackexchange.com/questions/3875/how-to-insert-a-newline-without-leaving-normal-mode
+nnoremap <silent> <leader>o :<C-u>call append(line("."),   repeat([""], v:count1))<CR>
+nnoremap <silent> <leader>O :<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>
+
 " Better copy & paste
 set clipboard=unnamed
-"" set pastetoggle=<F2>
+set pastetoggle=<F2>
 
 " Rebind <Leader> key
 let mapleader = ","
@@ -36,31 +65,21 @@ vnoremap > >gv
 
 
 " Python
-autocmd Filetype python setlocal tabstop=4
+autocmd FileType python setlocal tabstop=4
 autocmd FileType python setlocal softtabstop=4
-autocmd Filetype python setlocal shiftwidth=4
-autocmd Filetype python setlocal expandtab
-autocmd Filetype python setlocal autoindent
-autocmd Filetype python setlocal fileformat=unix
-let g:syntastic_python_checkers=['pep8', 'pylint', 'python']
+autocmd FileType python setlocal shiftwidth=4
+autocmd FileType python setlocal expandtab
+autocmd FileType python setlocal autoindent
+autocmd FileType python setlocal fileformat=unix
 
-" MIT Missing Semester settings
-set nocompatible
-filetype plugin on
-syntax on
-set shortmess+=I
-set number
-set relativenumber
-set laststatus=2
-set backspace=indent,eol,start
-set hidden
-set hlsearch
-map <leader>h :set hlsearch!<cr>
-set incsearch
-set ignorecase
-set smartcase
-set incsearch
-set noerrorbells visualbell t_vb=
+" HTML
+" ts = 'number of spaces that <Tab> in file uses'
+" sts = 'number of spaces that <Tab> uses while editing'
+" sw = 'number of spaces to use for (auto)indent step'
+autocmd FileType html setlocal ts=2 sts=2 sw=2
+
+" JavaScript
+autocmd FileType javascript setlocal ts=4 sts=4 sw=4
 
 " Unbind some useless/annoying default key bindings.
 nmap Q <Nop> " 'Q' in normal mode enters Ex mode. You almost never want this.
@@ -84,8 +103,8 @@ inoremap <Right> <ESC>:echoe "Use l"<CR>
 inoremap <Up>    <ESC>:echoe "Use k"<CR>
 inoremap <Down>  <ESC>:echoe "Use j"<CR>
 
-autocmd FileType python map <buffer> <F9> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
-autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+autocmd FileType python map <buffer> <C-b> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+autocmd FileType python imap <buffer> <C-b> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 
 " ~PLUGINS~
 " Vim-plug
@@ -95,23 +114,34 @@ Plug 'tomtom/tcomment_vim'
 Plug 'gruvbox-community/gruvbox'
 Plug 'vimwiki/vimwiki'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'alvan/vim-closetag'
+" Plug 'jiangmiao/auto-pairs'
+Plug 'preservim/nerdtree'
+Plug 'kien/ctrlp.vim'
+Plug 'airblade/vim-gitgutter'
 
 call plug#end()
 
 
-
-
 ""  coc.nvim config
-
 " coc plugins
 let g:coc_global_extensions = [
         \ 'coc-snippets',
         \ 'coc-pairs',
         \ 'coc-pyright',
         \ 'coc-python',
-        \ 'coc-prettier',
         \ 'coc-json',
+        \ 'coc-html',
+        \ 'coc-java',
+        \ 'coc-css',
+        \ 'coc-tsserver',
   \ ]
+
+" Plugin config
+
+" Prettier (for JS, TS, CSS, JSON) config
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
 
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some
 " unicode characters in the file autoload/float.vim
@@ -134,14 +164,14 @@ set updatetime=300
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
-if has("nvim-0.5.0") || has("patch-8.1.1564")
-  " Recently vim can merge signcolumn and number column into one
-  set signcolumn=number
-else
-  set signcolumn=yes
-endif
+" " Always show the signcolumn, otherwise it would shift the text each time
+" " diagnostics appear/become resolved.
+" if has("nvim-0.5.0") || has("patch-8.1.1564")
+"   " Recently vim can merge signcolumn and number column into one
+"   set signcolumn=number
+" else
+"   set signcolumn=yes
+" endif
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
@@ -200,6 +230,7 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
+
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
@@ -244,8 +275,9 @@ endif
 
 " Use CTRL-S for selections ranges.
 " Requires 'textDocument/selectionRange' support of language server.
-nmap <silent> <C-s> <Plug>(coc-range-select)
-xmap <silent> <C-s> <Plug>(coc-range-select)
+" Disabled below as I want to use <C-s> for saving
+" nmap <silent> <C-s> <Plug>(coc-range-select)
+" xmap <silent> <C-s> <Plug>(coc-range-select)
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
@@ -296,6 +328,51 @@ let g:ctrlp_max_height = 30
 "let g:pymode_syntax_builtin_objs = 0
 "let g:pymode_syntax_builtin_funcs = 0
 
+"" vim-closetag config
+" filenames like *.xml, *.html, *.xhtml, ...
+" These are the file extensions where this plugin is enabled.
+"
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
+
+" filenames like *.xml, *.xhtml, ...
+" This will make the list of non-closing tags self-closing in the specified files.
+"
+let g:closetag_xhtml_filenames = '*.xhtml,*.jsx'
+
+" filetypes like xml, html, xhtml, ...
+" These are the file types where this plugin is enabled.
+"
+let g:closetag_filetypes = 'html,xhtml,phtml'
+
+" filetypes like xml, xhtml, ...
+" This will make the list of non-closing tags self-closing in the specified files.
+"
+let g:closetag_xhtml_filetypes = 'xhtml,jsx'
+
+" integer value [0|1]
+" This will make the list of non-closing tags case-sensitive (e.g. `<Link>` will be closed while `<link>` won't.)
+"
+let g:closetag_emptyTags_caseSensitive = 1
+
+" dict
+" Disables auto-close if not in a "valid" region (based on filetype)
+"
+let g:closetag_regions = {
+    \ 'typescript.tsx': 'jsxRegion,tsxRegion',
+    \ 'javascript.jsx': 'jsxRegion',
+    \ 'typescriptreact': 'jsxRegion,tsxRegion',
+    \ 'javascriptreact': 'jsxRegion',
+    \ }
+
+" Shortcut for closing tags, default is '>'
+"
+let g:closetag_shortcut = '>'
+
+" Add > at current position without closing the current tag, default is ''
+"
+let g:closetag_close_shortcut = '<leader>>'
+
+
 " Theme
 colorscheme gruvbox
 :set bg=dark
@@ -304,16 +381,3 @@ highlight NonText ctermbg=none
 " Show whitespace (Must be inserted after? colorscheme command)
 :highlight ExtraWhitespace ctermbg=red guibg=red
 :match ExtraWhitespace /\s\+$/
-
-" Pathogen
-execute pathogen#infect()
-
-" Syntastic
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
