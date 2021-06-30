@@ -40,18 +40,8 @@ autocmd! bufwritepost .vimrc source %
 
 " Ctrl + S to save
 " https://stackoverflow.com/questions/3446320/in-vim-how-to-map-save-to-ctrl-s#3448551
-" noremap <silent> <leader>s          :update<CR>
-" inoremap <silent> <leader>s         <C-O>:update<CR>
-
-" Leader remappings
-noremap <leader>s :w
-inoremap <leader>s :w
-
-noremap <leader>q :close
-inoremap <leader>q :close
-
-noremap <leader>Q :bdelete
-inoremap <leader>Q :bdelete
+noremap <silent> <C-S>          :update<CR>
+inoremap <silent> <C-S>         <C-O>:update<CR>
 
 " Leader + o/O for inserting new line without going in insert mode
 " https://vi.stackexchange.com/questions/3875/how-to-insert-a-newline-without-leaving-normal-mode
