@@ -40,9 +40,18 @@ autocmd! bufwritepost .vimrc source %
 
 " Ctrl + S to save
 " https://stackoverflow.com/questions/3446320/in-vim-how-to-map-save-to-ctrl-s#3448551
-noremap <silent> <C-W>          :update<CR>
-vnoremap <silent> <C-W>         <C-C>:update<CR>
-inoremap <silent> <C-W>         <C-O>:update<CR>
+" noremap <silent> <leader>s          :update<CR>
+" inoremap <silent> <leader>s         <C-O>:update<CR>
+
+" Leader remappings
+noremap <leader>s :w
+inoremap <leader>s :w
+
+noremap <leader>q :close
+inoremap <leader>q :close
+
+noremap <leader>Q :bdelete
+inoremap <leader>Q :bdelete
 
 " Leader + o/O for inserting new line without going in insert mode
 " https://vi.stackexchange.com/questions/3875/how-to-insert-a-newline-without-leaving-normal-mode
@@ -54,7 +63,7 @@ set clipboard=unnamed
 set pastetoggle=<F2>
 
 " Rebind <Leader> key
-let mapleader = ","
+" let mapleader = ","
 
 " map sort function to a key
 vnoremap <Leader>s :sort<CR>
