@@ -380,3 +380,5 @@ highlight NonText ctermbg=none
 " Show whitespace (Must be inserted after? colorscheme command)
 :highlight ExtraWhitespace ctermbg=red guibg=red
 :match ExtraWhitespace /\s\+$/
+" Delete trailing whitespace
+nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
