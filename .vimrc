@@ -70,6 +70,7 @@ autocmd FileType python setlocal shiftwidth=4
 autocmd FileType python setlocal expandtab
 autocmd FileType python setlocal autoindent
 autocmd FileType python setlocal fileformat=unix
+autocmd BufNewfile *.py call append(0,'#! /usr/bin/env python')
 
 " HTML
 " ts = 'number of spaces that <Tab> in file uses'
