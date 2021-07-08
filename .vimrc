@@ -120,6 +120,9 @@ Plug 'preservim/nerdtree'
 Plug 'kien/ctrlp.vim'
 Plug 'airblade/vim-gitgutter'
 
+" Markdown
+Plug 'plasticboy/vim-markdown'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 call plug#end()
 
 
