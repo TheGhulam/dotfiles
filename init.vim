@@ -425,6 +425,10 @@ nnoremap <leader>gm :lua require('telescope').extensions.git_worktree.create_git
 vnoremap J :m '>+1<CR>gv=gv'
 vnoremap K :m '<-2<CR>gv=gv'
 
+" Paste yy/dd on cursor
+nnoremap gP i<CR><Esc>PkJxJx
+nnoremap gp a<CR><Esc>PkJxJx
+
 "" Colorscheme
 
 " Tokyonight
