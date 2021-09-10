@@ -429,6 +429,16 @@ vnoremap K :m '<-2<CR>gv=gv'
 nnoremap gP i<CR><Esc>PkJxJx
 nnoremap gp a<CR><Esc>PkJxJx
 
+" Yank till end of line
+nnoremap Y y$
+
+" Moving lines
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2><CR>gv=gv
+nnoremap <leader>k :m .-2<cr>==
+nnoremap <leader>j :m .+1<cr>==
+
+
 "" Colorscheme
 
 " Tokyonight
