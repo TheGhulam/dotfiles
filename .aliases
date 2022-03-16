@@ -40,6 +40,7 @@ alias cdd="cd /mnt/d/"
 alias cdc="cd /mnt/c/"
 alias cdp="cd /mnt/d/Programming"
 alias cdb="/mnt/d/EDUCATION/Bilkent"
+alias cdbp="/mnt/d/EDUCATION/Bilkent/\'22\ Spring/CS\ 102/Project/last-drop"
 alias cdbb="/mnt/d/EDUCATION/Bilkent/\'22\ Spring/CS\ 102" #Escape single quote and space character
 alias cw1="cd /mnt/d/Programming/Competitions/pe"
 alias paste.exe="powershell.exe Get-Clipboard"
