@@ -64,13 +64,14 @@ vnoremap > >gv
 
 
 " Python
-autocmd FileType python setlocal tabstop=4
-autocmd FileType python setlocal softtabstop=4
-autocmd FileType python setlocal shiftwidth=4
-autocmd FileType python setlocal expandtab
+
+autocmd FileType python setlocal expandtab tabstop=4 softtabstop=4 shiftwidth=4
 autocmd FileType python setlocal autoindent
 autocmd FileType python setlocal fileformat=unix
 autocmd BufNewfile *.py call append(0,'#! /usr/bin/env python')
+
+" C++
+autocmd FileType cpp setlocal expandtab tabstop=2 shiftwidth=2
 
 " HTML
 " ts = 'number of spaces that <Tab> in file uses'
@@ -118,6 +119,8 @@ Plug 'alvan/vim-closetag'
 " Plug 'jiangmiao/auto-pairs'
 Plug 'preservim/nerdtree'
 Plug 'kien/ctrlp.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 
 " Markdown
@@ -140,11 +143,16 @@ let g:coc_global_extensions = [
         \ 'coc-tsserver',
   \ ]
 
-" Plugin config
+"" Plugin config
 
-" Prettier (for JS, TS, CSS, JSON) config
+"-> NERDTree
+inoremap <c-t> <Esc>:NERDTreeToggle<cr>
+nnoremap <c-t> <Esc>:NERDTreeToggle<cr>
+
+"-> Prettier (for JS, TS, CSS, JSON) config
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
+"-> COC
 
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some
 " unicode characters in the file autoload/float.vim
