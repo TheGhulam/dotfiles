@@ -23,6 +23,7 @@ set colorcolumn=80
 highlight ColorColumn ctermbg=233
 set foldmethod=indent
 set foldlevel=99
+let mapleader=","
 
 " Split navigations
 nnoremap <C-J> <C-W><C-J>
@@ -380,5 +381,4 @@ highlight NonText ctermbg=none
 :highlight ExtraWhitespace ctermbg=red guibg=red
 :match ExtraWhitespace /\s\+$/
 " Delete trailing whitespace
-"nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 nnoremap <silent> <leader>rs :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
