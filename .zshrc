@@ -125,3 +125,6 @@ fi
 # stty -ixon
 
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Poetry
+export PATH="/home/gahme/.local/bin:$PATH"
