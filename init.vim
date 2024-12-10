@@ -1,7 +1,5 @@
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
-" source ~/.vimrc
-
 
 """ General Settings """
 set nocompatible
@@ -30,11 +28,17 @@ set foldmethod=indent
 set foldlevel=99
 set mouse+=a "Enable mouse support
 
-" Use system clipboard
-" for macOS
-"set clipboard=unnamed
-" for linux
-set clipboard=unnamedplus
+""" Clipboard """
+set clipboard=unnamedplus " Not working anymore after Ubuntu update
+
+" Workaround
+
+if system('uname -r') =~ "microsoft"
+  augroup Yank
+    autocmd!
+    autocmd TextYankPost * if v:event.operator == 'y' | call system('/mnt/c/windows/system32/clip.exe ', @") | endif
+  augroup END
+endif
 
 " Disable backup and swap files
 set nobackup
