@@ -226,3 +226,29 @@ vim.keymap.set('n', '<leader>rs', function()
     vim.cmd([[%s/\s\+$//e]])
     vim.fn.setpos('.', save_cursor)
 end, { silent = true })
+
+
+-- Python file execution setup
+-- Simpler, more direct approach using built-in terminal commands
+local function execute_python_file()
+    -- Save the current file
+    vim.cmd('write')
+    
+    -- Get the file path
+    local file = vim.fn.expand('%')
+    
+    -- Open a terminal in a new split and run the Python file
+    vim.cmd('belowright 10split')
+    vim.cmd('terminal python3 ' .. vim.fn.shellescape(file))
+    
+    -- Enter normal mode to allow easy closing of terminal
+    vim.cmd('startinsert')
+end
+
+-- Map Ctrl+P to execute Python files
+vim.keymap.set('n', '<C-p>', execute_python_file, { silent = true, desc = 'Execute Python File' })
+vim.keymap.set('i', '<C-p>', '<ESC><C-p>', { silent = true, desc = 'Execute Python File' })
+
+-- Terminal mappings
+vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+vim.keymap.set('t', '<C-w>', '<C-\\><C-n><C-w>', { desc = 'Terminal window commands' })
