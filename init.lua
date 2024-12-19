@@ -2,7 +2,8 @@
 vim.opt.shortmess:append('I')    -- Disable intro message
 vim.opt.number = true            -- Show line numbers
 vim.opt.relativenumber = true    -- Show relative line numbers
-vim.opt.laststatus = 2          -- Always show statusline
+vim.opt.laststatus = 1          -- Don't show statusline
+vim.opt.showmode = true
 vim.opt.backspace = 'indent,eol,start'
 vim.opt.hidden = true           -- Allow hidden buffers
 vim.opt.hlsearch = true         -- Highlight search results
@@ -131,7 +132,9 @@ vim.api.nvim_create_autocmd('FileType', {
 
 -- Plugin configuration with lazy.nvim
 require("lazy").setup({
-  -- Plugin specifications
+  { "chrisgrieser/nvim-spider", lazy = true },
+  { "NMAC427/guess-indent.nvim", lazy = true},
+  { "saecki/live-rename.nvim" },
   {
     "numToStr/Comment.nvim",    -- Modern commenting plugin
     event = { "BufReadPre", "BufNewFile" },
@@ -148,10 +151,6 @@ require("lazy").setup({
       vim.cmd("colorscheme gruvbox")
       vim.opt.background = "dark"
     end,
-  },
-  {
-    "vimwiki/vimwiki",         -- VimWiki
-    event = "VeryLazy",
   },
   {
     "windwp/nvim-autopairs",   -- Auto close brackets
@@ -194,12 +193,12 @@ require("lazy").setup({
     end,
   },
   {
-    "iamcco/markdown-preview.nvim",
-    ft = "markdown",
-    build = function()
-      vim.fn["mkdp#util#install"]()
-    end,
-  },
+        'MeanderingProgrammer/render-markdown.nvim',
+        dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' },
+        ---@module 'render-markdown'
+        ---@type render.md.UserConfig
+        opts = {},
+        },
 }, {
   install = {
     colorscheme = { "gruvbox" },
@@ -226,29 +225,3 @@ vim.keymap.set('n', '<leader>rs', function()
     vim.cmd([[%s/\s\+$//e]])
     vim.fn.setpos('.', save_cursor)
 end, { silent = true })
-
-
--- Python file execution setup
--- Simpler, more direct approach using built-in terminal commands
-local function execute_python_file()
-    -- Save the current file
-    vim.cmd('write')
-    
-    -- Get the file path
-    local file = vim.fn.expand('%')
-    
-    -- Open a terminal in a new split and run the Python file
-    vim.cmd('belowright 10split')
-    vim.cmd('terminal python3 ' .. vim.fn.shellescape(file))
-    
-    -- Enter normal mode to allow easy closing of terminal
-    vim.cmd('startinsert')
-end
-
--- Map Ctrl+P to execute Python files
-vim.keymap.set('n', '<C-p>', execute_python_file, { silent = true, desc = 'Execute Python File' })
-vim.keymap.set('i', '<C-p>', '<ESC><C-p>', { silent = true, desc = 'Execute Python File' })
-
--- Terminal mappings
-vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
-vim.keymap.set('t', '<C-w>', '<C-\\><C-n><C-w>', { desc = 'Terminal window commands' })
