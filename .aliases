@@ -44,3 +44,6 @@ alias paste.exe="powershell.exe Get-Clipboard"
 # Alias arguments are only passed at the end. Note that f is called at the very end of the alias.
 # The unset -f removes the function definition as the alias is executed so it doesn't hang around afterwards.
 alias clip='f(){ "$@" | clip.exe; unset -f f; }; f'
+
+# Frontend
+alias shadcn="bunx shadcn@latest"
